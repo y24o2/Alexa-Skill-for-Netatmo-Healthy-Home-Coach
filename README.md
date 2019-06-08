@@ -17,6 +17,6 @@ German Alexa Skill for Netatmo Healthy Home Coach
 
 ## Todo:
 - [X] alle Klima-Messwerte
-- [ ] Unterstützung für mehr als ein Device
-- [ ] Wifi-Status als Messwert
+- [X] Unterstützung für mehr als ein Device
+- [X] Wifi-Status als Messwert
 - [ ] Beta Test
