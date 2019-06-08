@@ -1,0 +1,167 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "home coach",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetTemperatureIntent",
+                    "slots": [],
+                    "samples": [
+                        "nenne mir die raumtemperatur",
+                        "Innentemperatur",
+                        "nenne mir die Temperatur",
+                        "Thermometer",
+                        "wie kalt ist es",
+                        "wie warm ist es",
+                        "raumtemperatur",
+                        "temperatur"
+                    ]
+                },
+                {
+                    "name": "GetAirQualityIntent",
+                    "slots": [],
+                    "samples": [
+                        "wie ist die Qualität der Luft",
+                        "nenne mir die Qualität der Luft",
+                        "nenne mir den zeh oh zwei gehalt",
+                        "C.O. Sensor",
+                        "Zeh Oh Sensor",
+                        "Luftgüte",
+                        "parts per million",
+                        "wie ist der zeh oh zwei gehalt",
+                        "wie viel zeh oh zwei ist in der Luft",
+                        "Kohlendioxid",
+                        "C O zwei",
+                        "Luftqualität"
+                    ]
+                },
+                {
+                    "name": "GetHumidityIntent",
+                    "slots": [],
+                    "samples": [
+                        "nenne mir die Luftfeuchtigkeit",
+                        "Hygrometer",
+                        "prozent luftfeutchtigkeit",
+                        "wie hoch ist die Luftfteuchtigkeit",
+                        "wie trocken ist es",
+                        "wie feucht ist es",
+                        "Luftfeuchtigkeit",
+                        "Feuchtigkeit"
+                    ]
+                },
+                {
+                    "name": "GetNoiseIntent",
+                    "slots": [],
+                    "samples": [
+                        "nenne mir die Lautstärke",
+                        "Schallpegel",
+                        "Dezibel",
+                        "wie laut ist es",
+                        "Lautstärke"
+                    ]
+                },
+                {
+                    "name": "GetPressureIntent",
+                    "slots": [],
+                    "samples": [
+                        "nennen mir den Luftdruck",
+                        "wie ist der Druck",
+                        "absoluter Luftdruck",
+                        "wie hoch ist der Luftdruck",
+                        "Luftdruck",
+                        "Barometer"
+                    ]
+                },
+                {
+                    "name": "GetHealthIndexIntent",
+                    "slots": [],
+                    "samples": [
+                        "nenne mir den Gesundheitsindex",
+                        "wie gut ist die luft",
+                        "wie gesund ist die luft",
+                        "Index",
+                        "Luftindex",
+                        "Healthindex",
+                        "Gesundheitswert",
+                        "Gesund"
+                    ]
+                },
+                {
+                    "name": "GetSumIntent",
+                    "slots": [],
+                    "samples": [
+                        "Messbericht",
+                        "nenne mir die Messwerte",
+                        "gebe mir einen Bericht zur Raumluft",
+                        "Bericht",
+                        "Ausfürhlicher Bericht",
+                        "Alle Werte",
+                        "Summe"
+                    ]
+                },
+                {
+                    "name": "GetLastUpdateIntent",
+                    "slots": [],
+                    "samples": [
+                        "wann wurde die Messung durchgeführt",
+                        "Zeit der Messung",
+                        "Messzeitpunkt",
+                        "Zeitpunkt",
+                        "Wann wurde gemessen",
+                        "Wie aktuell sind die gemessenen Werte",
+                        "Wie aktuelle sind die Werte",
+                        "Alter",
+                        "Messwertalter",
+                        "wie alt ist der Messwert",
+                        "von wann sind die neuesten Werte",
+                        "wie alt sind die Werte",
+                        "letztes Update"
+                    ]
+                },
+                {
+                    "name": "GetDeviceLocationIntent",
+                    "slots": [],
+                    "samples": [
+                        "wo befindet sich der healthy home coach",
+                        "wo steht das device",
+                        "position",
+                        "standort",
+                        "device location",
+                        "location",
+                        "Wo befindet sich der Home Coach"
+                    ]
+                },
+                {
+                    "name": "GetUserEmailIntent",
+                    "slots": [],
+                    "samples": [
+                        "emailadresse",
+                        "wem gehört der home coach",
+                        "besitzer",
+                        "email",
+                        "nutzer",
+                        "wer ist der nutzer",
+                        "Wie ist meine emailadresse"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
