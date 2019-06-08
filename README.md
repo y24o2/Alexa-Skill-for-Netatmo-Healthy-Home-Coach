@@ -13,6 +13,8 @@ German Alexa Skill for Netatmo Healthy Home Coach
 - Zeitpunkt der letzten Messung
 - Device Standort
 - Nutzer Emailadresse
+- Liste der verknüpften Geräte
+- WiFi Status
 
 
 ## Todo:
