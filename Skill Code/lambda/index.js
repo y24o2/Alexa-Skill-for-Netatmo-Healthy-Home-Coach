@@ -1,13 +1,7 @@
-// This sample demonstrates handling intents from an Alexa skill using the Alexa Skills Kit SDK (v2).
-// Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
-// session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 var https = require('https');
 
 // Hilfs-Funktionen:
-//      httpGet     Ruft die aktuellen Werte aus der API ab
-//      timeLeft    Berechnet die vergangene Zeit
-
 const httpGet = (access_token) => {
     return new Promise(((resolve, reject) => {
         var options = {
@@ -52,34 +46,40 @@ const timeLeft = (seconds) => {
     }
 };
 
+const deviceLookup = (devices, name) => {
+    var id = -1;
+    var cnt = 0;
+    devices.forEach((it) => {
+        if (it.station_name.toLowerCase() === name.toLowerCase()){
+            id = cnt;
+        }
+        cnt++;
+    });
+    return id;
+};
+
 // LaunchRequestHandler
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
     },
     handle(handlerInput) {
-        var tokenMsg = ""
+        var speechText = "";
         if (!handlerInput.requestEnvelope.context.System.user.accessToken || handlerInput.requestEnvelope.context.System.user.accessToken.length === 0){
-            tokenMsg = " Bitte verbinde diesen Skill mit deinem Netatmo-Account!";
-        }
-        const speechText = "Willkommen, in meinem Skill Healthy Home Coach." + tokenMsg;
+            speechText = "Willkommen, im Skill Healthy Home Coach. Bitte verbinde diesen Skill mit deinem Netatmo-Account!"
         return handlerInput.responseBuilder
             .speak(speechText)
+            .getResponse();
+        }
+        speechText = "Willkommen, im Skill Healthy Home Coach. Was kann ich für dich tun?";
+        return handlerInput.responseBuilder
+            .speak(speechText)
+            .reprompt("Welche Funktion möchtest du starten?")
             .getResponse();
     }
 };
 
 // Intent Handler
-//      Ausführen der angeforderten Funktion
-//      GetTemperatureIntent    Thermometer
-//      GetAirQualityIntent     CO2-Gehalt
-//      GetHumidityIntent       Luftfeuchtigkeit
-//      GetNoiseIntent          Lautstärke
-//      GetPressureIntent       Luftdruck
-//      GetHealthIndexIntent    HealthIndex     0 = Healthy, 1 = Fine, 2 = Fair, 3 = Poor, 4 = Unhealthy
-//      GetSumIntent            Alle Werte
-//      GetLastUpdateIntent     Aktualität
-
 const GetTemperatureIntentHandler = {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
@@ -98,8 +98,20 @@ const GetTemperatureIntentHandler = {
             cardMessage = speechText
         }
         else{
-            const time_utc = response.body.devices[0].dashboard_data.time_utc;
-            const temperature = (response.body.devices[0].dashboard_data.Temperature + "").replace(".", ",");
+            var device_num = 0;
+            if(handlerInput.requestEnvelope.request.intent.slots.station_name.value){
+                device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
+                if (device_num === -1){
+                    speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                    cardMessage = speechText;
+                    return handlerInput.responseBuilder
+                        .speak(speechText)
+                        .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                        .getResponse();
+                }
+            }
+            const time_utc = response.body.devices[device_num].dashboard_data.time_utc;
+            const temperature = (response.body.devices[device_num].dashboard_data.Temperature + "").replace(".", ",");
             let time_diff = Math.floor(Date.now() / 1000) - time_utc;
             speechText = temperature + " °C";
             cardMessage = speechText +"\ngemessen vor "+ timeLeft(time_diff);
@@ -130,8 +142,20 @@ const GetAirQualityIntentHandler = {
             cardMessage = speechText
         }
         else{
-            const time_utc = response.body.devices[0].dashboard_data.time_utc;
-            const co2 = (response.body.devices[0].dashboard_data.CO2 + "");
+            var device_num = 0;
+            if(handlerInput.requestEnvelope.request.intent.slots.station_name.value){
+                device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
+                if (device_num === -1){
+                    speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                    cardMessage = speechText;
+                    return handlerInput.responseBuilder
+                        .speak(speechText)
+                        .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                        .getResponse();
+                }
+            }
+            const time_utc = response.body.devices[device_num].dashboard_data.time_utc;
+            const co2 = (response.body.devices[device_num].dashboard_data.CO2 + "");
             let time_diff = Math.floor(Date.now() / 1000) - time_utc;
             speechText = co2 + " ppm";
             cardMessage = speechText +"\ngemessen vor "+ timeLeft(time_diff);
@@ -162,8 +186,20 @@ const GetHumidityIntentHandler = {
             cardMessage = speechText
         }
         else{
-            const time_utc = response.body.devices[0].dashboard_data.time_utc;
-            const humidity = (response.body.devices[0].dashboard_data.Humidity + "");
+            var device_num = 0;
+            if(handlerInput.requestEnvelope.request.intent.slots.station_name.value){
+                device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
+                if (device_num === -1){
+                    speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                    cardMessage = speechText;
+                    return handlerInput.responseBuilder
+                        .speak(speechText)
+                        .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                        .getResponse();
+                }
+            }
+            const time_utc = response.body.devices[device_num].dashboard_data.time_utc;
+            const humidity = (response.body.devices[device_num].dashboard_data.Humidity + "");
             let time_diff = Math.floor(Date.now() / 1000) - time_utc;
             speechText = humidity + " %";
             cardMessage = speechText +"\ngemessen vor "+ timeLeft(time_diff);
@@ -194,8 +230,20 @@ const GetNoiseIntentHandler = {
             cardMessage = speechText
         }
         else{
-            const time_utc = response.body.devices[0].dashboard_data.time_utc;
-            const noise = (response.body.devices[0].dashboard_data.Noise + "");
+            var device_num = 0;
+            if(handlerInput.requestEnvelope.request.intent.slots.station_name.value){
+                device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
+                if (device_num === -1){
+                    speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                    cardMessage = speechText;
+                    return handlerInput.responseBuilder
+                        .speak(speechText)
+                        .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                        .getResponse();
+                }
+            }
+            const time_utc = response.body.devices[device_num].dashboard_data.time_utc;
+            const noise = (response.body.devices[device_num].dashboard_data.Noise + "");
             let time_diff = Math.floor(Date.now() / 1000) - time_utc;
             speechText = noise + " dB";
             cardMessage = speechText +"\ngemessen vor "+ timeLeft(time_diff);
@@ -226,9 +274,21 @@ const GetPressureIntentHandler = {
             cardMessage = speechText
         }
         else{
-            const time_utc = response.body.devices[0].dashboard_data.time_utc;
-            const pressure = (response.body.devices[0].dashboard_data.Pressure + "").replace(".", ",");
-            const absPressure = (response.body.devices[0].dashboard_data.AbsolutePressure + "").replace(".", ",");
+            var device_num = 0;
+            if(handlerInput.requestEnvelope.request.intent.slots.station_name.value){
+                device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
+                if (device_num === -1){
+                    speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                    cardMessage = speechText;
+                    return handlerInput.responseBuilder
+                        .speak(speechText)
+                        .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                        .getResponse();
+                }
+            }
+            const time_utc = response.body.devices[device_num].dashboard_data.time_utc;
+            const pressure = (response.body.devices[device_num].dashboard_data.Pressure + "").replace(".", ",");
+            const absPressure = (response.body.devices[device_num].dashboard_data.AbsolutePressure + "").replace(".", ",");
             let time_diff = Math.floor(Date.now() / 1000) - time_utc;
             speechText = pressure + " Hektopascal und absolut " + absPressure + " Hektopascal";
             cardMessage = pressure + " hPa, absolute " + absPressure + " hPa" +"\ngemessen vor "+ timeLeft(time_diff);
@@ -259,8 +319,20 @@ const GetHealthIndexIntentHandler = {
             cardMessage = speechText
         }
         else{
-            const time_utc = response.body.devices[0].dashboard_data.time_utc;
-            const health_idx = response.body.devices[0].dashboard_data.health_idx;
+            var device_num = 0;
+            if(handlerInput.requestEnvelope.request.intent.slots.station_name.value){
+                device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
+                if (device_num === -1){
+                    speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                    cardMessage = speechText;
+                    return handlerInput.responseBuilder
+                        .speak(speechText)
+                        .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                        .getResponse();
+                }
+            }
+            const time_utc = response.body.devices[device_num].dashboard_data.time_utc;
+            const health_idx = response.body.devices[device_num].dashboard_data.health_idx;
             let time_diff = Math.floor(Date.now() / 1000) - time_utc;
             speechText = ["Gesund", "Gut", "Okay", "Schlecht", "Ungesund"][health_idx];
             cardMessage = "Index: " + health_idx + " ("+ speechText +")\ngemessen vor "+ timeLeft(time_diff);
@@ -274,7 +346,7 @@ const GetHealthIndexIntentHandler = {
 };
 
 const GetSumIntentHandler = {
-    canHandle(handlerInput) {
+    canHandle   (handlerInput) {
         const request = handlerInput.requestEnvelope.request;
         return request.type === 'IntentRequest'
         && request.intent.name === 'GetSumIntent';
@@ -291,8 +363,20 @@ const GetSumIntentHandler = {
             cardMessage = speechText
         }
         else{
-            const time_utc = response.body.devices[0].dashboard_data.time_utc;
-            const data = response.body.devices[0].dashboard_data;
+            var device_num = 0;
+            if(handlerInput.requestEnvelope.request.intent.slots.station_name.value){
+                device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
+                if (device_num === -1){
+                    speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                    cardMessage = speechText;
+                    return handlerInput.responseBuilder
+                        .speak(speechText)
+                        .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                        .getResponse();
+                }
+            }
+            const time_utc = response.body.devices[device_num].dashboard_data.time_utc;
+            const data = response.body.devices[device_num].dashboard_data;
             let time_diff = Math.floor(Date.now() / 1000) - time_utc;
             
             speechText = "<speak><p>Das Raumklima ist insgesamt " + ["gesund", "gut", "okay", "schlecht", "ungesund"][data.health_idx];
@@ -334,7 +418,19 @@ const GetLastUpdateIntentHandler = {
             cardMessage = speechText
         }
         else{
-            const time_utc = response.body.devices[0].dashboard_data.time_utc;
+            var device_num = 0;
+            if(handlerInput.requestEnvelope.request.intent.slots.station_name.value){
+                device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
+                if (device_num === -1){
+                    speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                    cardMessage = speechText;
+                    return handlerInput.responseBuilder
+                        .speak(speechText)
+                        .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                        .getResponse();
+                }
+            }
+            const time_utc = response.body.devices[device_num].dashboard_data.time_utc;
             let time_diff = Math.floor(Date.now() / 1000) - time_utc;
             speechText = "Messung durchgeführt vor " + timeLeft(time_diff);
             cardMessage = speechText;
@@ -365,8 +461,20 @@ const GetDeviceLocationIntentHandler = {
             cardMessage = speechText
         }
         else{
-            const time_utc = response.body.devices[0].dashboard_data.time_utc;
-            const place = response.body.devices[0].place;
+            var device_num = 0;
+            if(handlerInput.requestEnvelope.request.intent.slots.station_name.value){
+                device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
+                if (device_num === -1){
+                    speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                    cardMessage = speechText;
+                    return handlerInput.responseBuilder
+                        .speak(speechText)
+                        .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                        .getResponse();
+                }
+            }
+            const time_utc = response.body.devices[device_num].dashboard_data.time_utc;
+            const place = response.body.devices[device_num].place;
             let time_diff = Math.floor(Date.now() / 1000) - time_utc;
             speechText = place.city;
             cardMessage = speechText + "\n\tLong: "+place.location[0];
@@ -399,9 +507,7 @@ const GetUserEmailIntentHandler = {
             cardMessage = speechText
         }
         else{
-            const time_utc = response.body.devices[0].dashboard_data.time_utc;
             const mail = response.body.user.mail;
-            let time_diff = Math.floor(Date.now() / 1000) - time_utc;
             speechText = mail;
             cardMessage = speechText;
         }
@@ -413,9 +519,87 @@ const GetUserEmailIntentHandler = {
     },
 };
 
-// Buildin intents:
-//      Alexa Default Intents
+const GetWifiStatusIntentHandler = {
+    canHandle(handlerInput) {
+        const request = handlerInput.requestEnvelope.request;
+        return request.type === 'IntentRequest'
+        && request.intent.name === 'GetWifiStatusIntent';
+    },
+    async handle(handlerInput) {
+        
+        let speechText = "";
+        let cardMessage = "";
+        var accessToken = handlerInput.requestEnvelope.context.System.user.accessToken;
+        var response = await httpGet(accessToken);
+        
+        if (response.status === "error"){
+            speechText = "Ups, da ist etwas schiefgegangen. Bitte probiere es später noch einmal!"
+            cardMessage = speechText
+        }
+        else{
+            var device_num = 0;
+            if(handlerInput.requestEnvelope.request.intent.slots.station_name.value){
+                device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
+                if (device_num === -1){
+                    speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                    cardMessage = speechText;
+                    return handlerInput.responseBuilder
+                        .speak(speechText)
+                        .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                        .getResponse();
+                }
+            }
+            const time_utc = response.body.devices[device_num].dashboard_data.time_utc;
+            const wifi_status = response.body.devices[device_num].wifi_status;
+            let time_diff = Math.floor(Date.now() / 1000) - time_utc;
+            speechText = wifi_status+"";
+            cardMessage = speechText + "\n(86=schlecht, 56=gut)";
+        }
+        
+        return handlerInput.responseBuilder
+        .speak(speechText)
+        .withSimpleCard('Healthy Home Coach | WiFi-Status', cardMessage)
+        .getResponse();
+    },
+};
 
+const GetDeviceListIntentHandler = {
+    canHandle(handlerInput) {
+        const request = handlerInput.requestEnvelope.request;
+        return request.type === 'IntentRequest'
+        && request.intent.name === 'GetDeviceListIntent';
+    },
+    async handle(handlerInput) {
+        
+        let speechText = "";
+        let cardMessage = "";
+        var accessToken = handlerInput.requestEnvelope.context.System.user.accessToken;
+        var response = await httpGet(accessToken);
+        
+        if (response.status === "error"){
+            speechText = "Ups, da ist etwas schiefgegangen. Bitte probiere es später noch einmal!"
+            cardMessage = speechText
+        }
+        else{
+            const count = response.body.devices.length;
+            const devices = response.body.devices;
+            if (count >= 2){
+                speechText = "<p>" + count + " Geräte sind verknüpft.</p>";
+            }
+            devices.forEach((it) => {
+                speechText += "<p>Gerät: "+it.station_name+"</p>";
+                cardMessage += it.station_name + " ("+it._id+")\n";
+            });
+        }
+        
+        return handlerInput.responseBuilder
+        .speak(speechText)
+        .withSimpleCard('Healthy Home Coach | DeviceList', cardMessage)
+        .getResponse();
+    },
+};
+
+// Buildin intents:
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -453,10 +637,6 @@ const SessionEndedRequestHandler = {
     }
 };
 
-// The intent reflector is used for interaction model testing and debugging.
-// It will simply repeat the intent the user said. You can create custom handlers
-// for your intents by defining them above, then also adding them to the request
-// handler chain below.
 const IntentReflectorHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest';
@@ -474,9 +654,6 @@ const IntentReflectorHandler = {
     }
 };
 
-// Generic error handling to capture any syntax or routing errors. If you receive an error
-// stating the request handler chain is not found, you have not implemented a handler for
-// the intent being invoked or included it in the skill builder below.
 const ErrorHandler = {
     canHandle() {
         return true;
@@ -492,9 +669,7 @@ const ErrorHandler = {
     }
 };
 
-// This handler acts as the entry point for your skill, routing all request and response
-// payloads to the handlers above. Make sure any new handlers or interceptors you've
-// defined are included below. The order matters - they're processed top to bottom.
+// SkillBuilder
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
@@ -511,7 +686,9 @@ exports.handler = Alexa.SkillBuilders.custom()
         GetLastUpdateIntentHandler,
         GetDeviceLocationIntentHandler,
         GetUserEmailIntentHandler,
-        IntentReflectorHandler) // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
+        GetWifiStatusIntentHandler,
+        GetDeviceListIntentHandler,
+        IntentReflectorHandler) // this is the last RequestHandlers in this list
     .addErrorHandlers(
         ErrorHandler)
     .lambda();
