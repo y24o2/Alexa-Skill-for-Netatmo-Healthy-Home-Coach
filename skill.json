@@ -21,8 +21,15 @@
                 },
                 {
                     "name": "GetTemperatureIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
                     "samples": [
+                        "sage mir die {station_name} temperatur",
+                        "nenne mir die temperatur von {station_name}",
                         "nenne mir die raumtemperatur",
                         "Innentemperatur",
                         "nenne mir die Temperatur",
@@ -35,8 +42,15 @@
                 },
                 {
                     "name": "GetAirQualityIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
                     "samples": [
+                        "wieviel C O zwei ist im {station_name}",
+                        "wie ist die Qualität der Luft vom {station_name}",
                         "wie ist die Qualität der Luft",
                         "nenne mir die Qualität der Luft",
                         "nenne mir den zeh oh zwei gehalt",
@@ -53,8 +67,15 @@
                 },
                 {
                     "name": "GetHumidityIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
                     "samples": [
+                        "nenne mir die Luftfeuchtigkeit vom {station_name}",
+                        "wie ist die Luftfeuchtigkeit im {station_name}",
                         "nenne mir die Luftfeuchtigkeit",
                         "Hygrometer",
                         "prozent luftfeutchtigkeit",
@@ -67,8 +88,14 @@
                 },
                 {
                     "name": "GetNoiseIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
                     "samples": [
+                        "wie laut ist es im {station_name}",
                         "nenne mir die Lautstärke",
                         "Schallpegel",
                         "Dezibel",
@@ -78,8 +105,15 @@
                 },
                 {
                     "name": "GetPressureIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
                     "samples": [
+                        "nenne den Luftdurck vom {station_name}",
+                        "wie ist der Luftdruck im {station_name}",
                         "nennen mir den Luftdruck",
                         "wie ist der Druck",
                         "absoluter Luftdruck",
@@ -90,8 +124,15 @@
                 },
                 {
                     "name": "GetHealthIndexIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
                     "samples": [
+                        "nenne mir den Gesundheitsindex vom {station_name}",
+                        "Healthindex vom {station_name}",
                         "nenne mir den Gesundheitsindex",
                         "wie gut ist die luft",
                         "wie gesund ist die luft",
@@ -104,8 +145,17 @@
                 },
                 {
                     "name": "GetSumIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
                     "samples": [
+                        "Messbericht {station_name}",
+                        "nenne mir alle Messwerte aus dem {station_name}",
+                        "lese den Messbericht vom {station_name} vor",
+                        "berichte aus dem {station_name}",
                         "Messbericht",
                         "nenne mir die Messwerte",
                         "gebe mir einen Bericht zur Raumluft",
@@ -117,8 +167,15 @@
                 },
                 {
                     "name": "GetLastUpdateIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
                     "samples": [
+                        "wie alt sind die messwerte aus dem {station_name}",
+                        "wann wurde zuletzt im {station_name} gemessen",
                         "wann wurde die Messung durchgeführt",
                         "Zeit der Messung",
                         "Messzeitpunkt",
@@ -136,8 +193,14 @@
                 },
                 {
                     "name": "GetDeviceLocationIntent",
-                    "slots": [],
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
                     "samples": [
+                        "wo befindet sich {station_name}",
                         "wo befindet sich der healthy home coach",
                         "wo steht das device",
                         "position",
@@ -158,6 +221,34 @@
                         "nutzer",
                         "wer ist der nutzer",
                         "Wie ist meine emailadresse"
+                    ]
+                },
+                {
+                    "name": "GetWifiStatusIntent",
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "WiFi Status {station_name}",
+                        "wie ist die Signalstärke im {station_name}",
+                        "W-Lan Signalstärke",
+                        "Netzwerkverbindung",
+                        "WiFi Status",
+                        "nenne mir den Wlan Status"
+                    ]
+                },
+                {
+                    "name": "GetDeviceListIntent",
+                    "slots": [],
+                    "samples": [
+                        "welche geräte sind mit meinem account verbunden",
+                        "zähle verknüpfte geräte auf",
+                        "device liste",
+                        "geräteliste",
+                        "liste alle verknüpften geräte auf"
                     ]
                 }
             ],
