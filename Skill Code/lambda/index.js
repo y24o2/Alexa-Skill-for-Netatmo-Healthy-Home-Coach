@@ -17,6 +17,7 @@ const LaunchRequestHandler = {
             speechText = "Willkommen, im Skill Healthy Home Coach. Bitte verbinde diesen Skill mit deinem Netatmo-Account!"
         return handlerInput.responseBuilder
             .speak(speechText)
+            .withLinkAccountCard()
             .getResponse();
         }
         speechText = "Willkommen, im Skill Healthy Home Coach. Was kann ich für dich tun?";
