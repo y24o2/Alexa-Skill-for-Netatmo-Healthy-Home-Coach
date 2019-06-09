@@ -95,8 +95,8 @@ const GetPressureIntentHandler = buildIntentHandler("GetPressureIntent", (respon
     const pressure = (response.body.devices[device_num].dashboard_data.Pressure + "").replace(".", ",");
     const absPressure = (response.body.devices[device_num].dashboard_data.AbsolutePressure + "").replace(".", ",");
     let time_diff = Math.floor(Date.now() / 1000) - time_utc;
-    speechText = pressure + " Hektopascal und absolut " + absPressure + " Hektopascal";
-    card.message = pressure + " hPa\nabsolute " + absPressure + " hPa" +"\ngemessen vor "+ timeLeft(time_diff);
+    speechText = pressure + " Milli-bar";
+    card.message = pressure + " mbar\nabsolut " + absPressure + " mbar" +"\ngemessen vor "+ timeLeft(time_diff);
     return {"speechText": speechText, "card": card};
 });
 
