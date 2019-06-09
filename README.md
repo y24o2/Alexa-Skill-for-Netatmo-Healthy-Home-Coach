@@ -22,3 +22,8 @@ German Alexa Skill for Netatmo Healthy Home Coach
 - [X] Unterstützung für mehr als ein Device
 - [X] Wifi-Status als Messwert
 - [ ] Beta Test
+
+
+## Tester gesucht:
+Wer Interesse hat mir zu helfen diesen Skill zu verbessern oder ihn einfach nur mal ausprobieren kann sich gerne melden.
+Ich würde mich über Feedback und BugReports freuen.
