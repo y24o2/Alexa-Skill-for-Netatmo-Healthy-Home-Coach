@@ -25,5 +25,5 @@ German Alexa Skill for Netatmo Healthy Home Coach
 
 
 ## Tester gesucht:
-Wer Interesse hat mir zu helfen diesen Skill zu verbessern oder ihn einfach nur mal ausprobieren kann sich gerne melden.
+Wer Interesse hat mir zu helfen diesen Skill zu verbessern oder ihn einfach nur mal ausprobieren möchte kann sich gerne melden.
 Ich würde mich über Feedback und BugReports freuen.
