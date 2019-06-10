@@ -89,7 +89,7 @@ const buildIntentHandler = (intent, callback) => {
                             .getResponse();
                     }
                 }
-                output = callback(response, device_num);
+                output = callback(response, device_num, handlerInput.requestEnvelope.request.locale);
                 speechText = output.speechText;
                 cardTitle = output.card.title;
                 cardMessage = output.card.message;
@@ -103,9 +103,18 @@ const buildIntentHandler = (intent, callback) => {
     };
 };
 
+const stringReplace = (string, replacements) => {
+    let res = string;
+    replacements.forEach((it) => {
+        res = res.replace(it.needle, it.replacement);
+    });
+    return res;
+};
+
 module.exports = {
     "httpGet": httpGet,
     "timeLeft": timeLeft,
     "deviceLookup": deviceLookup,
     "buildIntentHandler": buildIntentHandler,
+    "stringReplace": stringReplace
 }
