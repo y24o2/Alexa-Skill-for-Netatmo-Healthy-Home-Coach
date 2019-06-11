@@ -74,7 +74,7 @@ const GetHumidityIntentHandler = buildIntentHandler("GetHumidityIntent", (respon
     let time_diff = Math.floor(Date.now() / 1000) - time_utc;
     speechText = stringReplace(strings[locale].humidityIntent.speechText, [{"needle": "{{value}}", "replacement": humidity}]);
     card.message = stringReplace(strings[locale].humidityIntent.card.message,
-        [{"needle": "{{speechText}}", "replacement": speechText}, {"needle": "{{timeLeft}}", "replacement": timeLeft(time_diff)}]);
+        [{"needle": "{{speechText}}", "replacement": speechText}, {"needle": "{{timeLeft}}", "replacement": timeLeft(time_diff, locale)}]);
     return {"speechText": speechText, "card": card};
 });
 
