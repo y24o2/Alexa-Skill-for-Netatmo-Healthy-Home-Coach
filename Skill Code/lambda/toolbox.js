@@ -1,4 +1,5 @@
 var https = require('https');
+let strings = require('./strings.json')
 
 const httpGet = (access_token) => {
     return new Promise(((resolve, reject) => {
@@ -29,18 +30,18 @@ const httpGet = (access_token) => {
     }));
 }
 
-const timeLeft = (seconds) => {
+const timeLeft = (seconds, locale) => {
     if (seconds <= 60){
-        return seconds + " Sekunden";
+        return stringReplace(strings[locale].time.unit_s, [{"needle": "{{count}}", "replacement": seconds}]);
     }
     else if (seconds <= 3600){
-        return Math.floor(seconds/60) + " Minuten";
+        return stringReplace(strings[locale].time.unit_m, [{"needle": "{{count}}", "replacement": Math.floor(seconds/60)}]);
     }
     else if (seconds <= 3600 * 24){
-        return Math.floor(seconds/(3600*24)) + " Stunden";
+        return stringReplace(strings[locale].time.unit_h, [{"needle": "{{count}}", "replacement": Math.floor(seconds/3600)}]);
     }
     else{
-        return "mehr als 1 Tag";
+        return strings[locale].time.day;
     }
 };
 
@@ -72,8 +73,8 @@ const buildIntentHandler = (intent, callback) => {
             var response = await httpGet(accessToken);
             
             if (response.status === "error"){
-                speechText = "Ups, da ist etwas schiefgegangen. Bitte probiere es später noch einmal!";
-                cardTitle = 'Healthy Home Coach | Fehler';
+                speechText = strings[handlerInput.requestEnvelope.request.locale].errorIntent.speechText;
+                cardTitle = strings[handlerInput.requestEnvelope.request.locale].errorIntent.card.title;
                 cardMessage = speechText;
             }
             else{
@@ -81,11 +82,11 @@ const buildIntentHandler = (intent, callback) => {
                 if(handlerInput.requestEnvelope.request.intent.slots && handlerInput.requestEnvelope.request.intent.slots.station_name && handlerInput.requestEnvelope.request.intent.slots.station_name.value){
                     device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
                     if (device_num === -1){
-                        speechText = handlerInput.requestEnvelope.request.intent.slots.station_name.value + " nicht gefunden.";
+                        speechText = stringReplace(strings[handlerInput.requestEnvelope.request.locale].errorIntent.stationName_notFound, [{"needle": "station_name", "replacement": handlerInput.requestEnvelope.request.intent.slots.station_name.value}]);
                         cardMessage = speechText;
                         return handlerInput.responseBuilder
                             .speak(speechText)
-                            .withSimpleCard('Healthy Home Coach | Fehler', cardMessage)
+                            .withSimpleCard(strings[handlerInput.requestEnvelope.request.locale].errorIntent.card.title, cardMessage)
                             .getResponse();
                     }
                 }
