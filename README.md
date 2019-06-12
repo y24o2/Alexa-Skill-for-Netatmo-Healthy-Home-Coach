@@ -1,6 +1,6 @@
 # Alexa Skill for Netatmo Healthy Home Coach
 
-~~German~~ Alexa Skill for Netatmo Healthy Home Coach
+Alexa Skill for Netatmo Healthy Home Coach
 
 ## Intents:
 - Temperatur
