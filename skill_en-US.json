@@ -216,6 +216,7 @@
                     "samples": [
                         "station list",
                         "list the linked devices",
+                        "list linked devices",
                         "device list",
                         "list devices",
                         "list the connected devices"
