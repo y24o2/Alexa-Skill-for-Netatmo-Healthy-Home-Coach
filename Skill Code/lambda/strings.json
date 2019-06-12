@@ -73,7 +73,7 @@
             "day": "mehr als 1 Tag"
         }
     },
-        "en-US":{
+    "en-US":{
         "welcome": {
             "notLinked": "Welcome to the Skill Healthy Home Coach. Please connect this skill with your Netatmo acount!",
             "linked": "Welcome to the Skill Healthy Home Coach. What can I do for you?",
