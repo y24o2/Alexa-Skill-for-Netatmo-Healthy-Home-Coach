@@ -43,7 +43,7 @@
             "speechText": ""
         },
         "mailIntent": {
-            "card": {"title": "Healthy Home Coach | Emailaddresse", "message": ""},
+            "card": {"title": "Healthy Home Coach | Emailadresse", "message": ""},
             "speechText": ""
         },
         "wifiSignalIntent": {
@@ -71,6 +71,80 @@
             "unit_m": "{{count}} Minuten",
             "unit_h": "{{count}} Stunden",
             "day": "mehr als 1 Tag"
+        }
+    },
+        "en-US":{
+        "welcome": {
+            "notLinked": "Welcome to the Skill Healthy Home Coach. Please connect this skill with your Netatmo acount!",
+            "linked": "Welcome to the Skill Healthy Home Coach. What can I do for you?",
+            "reprompt": "Which function do you want to start?"
+        },
+        "temperatureIntent":{
+            "card": {"title": "Healthy Home Coach | Temperature", "message": "{{speechText}}\nmeasured {{timeLeft}} ago"},
+            "speechText": "{{value}} °F"
+        },
+        "airQualityIntent": {
+            "card": {"title": "Healthy Home Coach | CO2 Concentration", "message": "{{speechText}}\nmeasured {{timeLeft}} ago"},
+            "speechText": "{{value}} ppm"
+
+        },
+        "humidityIntent": {
+            "card": {"title": "Healthy Home Coach | Humidity", "message": "{{speechText}}\nmeasured {{timeLeft}} ago"},
+            "speechText": "{{value}} %"
+        },
+        "noiseLevelIntent": {
+            "card": {"title": "Healthy Home Coach | Noise Level", "message": "{{speechText}}\nmeasured {{timeLeft}} ago"},
+            "speechText": "{{value}} dB"
+        },
+        "airPressureIntent":{
+            "card":{"title": "Healthy Home Coach | Air Pressure", "message": "{{air_pressure}} mbar\nabsolut {{abs_air_pressure}} mbar"},
+            "speechText": "{{value}} Milli-bar"
+        },
+        "healthIndexIntent": {
+            "card": {"title": "Healthy Home Coach | Health Index", "message": "Index: {{value}} ({{spoken_index}})\nmeasured {{timeLeft}} ago"},
+            "speechText": "{{value}}"
+        },
+        "sumIntent": {
+            "card": {"title": "Healthy Home Coach", "message": "Healthindex: {{index}} ({{spoken_index}})\nTemperature: {{temperature}} °F\nHumidity: {{humidity}} %\nCO2-Concentration: {{co2}} ppm\nAir Pressure: {{pressure}} mbar\nNoise Level: {{noise_level}} dB\nmeasured {{timeLeft}} ago"},
+            "speechText": "<speak><p>The indoor climate is {{index}} overall</p><p>The temperature is {{temperature}} degree fahrenheit</p><p>The humidity is {{humidity}} %</p><p>The CO2-Concentration is {{co2}} ppm</p><p>The air pressure is {{pressure}} Milli-bar</p><p>The Noise level is {{noise_level}} Dezibell</p></speak>"
+        },
+        "timeIntent": {
+            "card": {"title": "Healthy Home Coach | Measuring time", "message": "Measured {{value}} ago"},
+            "speechText": "Measured {{value}} ago"
+        },
+        "locationIntent": {
+            "card": {"title": "Healthy Home Coach | Location", "message": "{{city}}\n\tLong: {{long}}\n\tLat: {{lat}}"},
+            "speechText": ""
+        },
+        "mailIntent": {
+            "card": {"title": "Healthy Home Coach | Emailaddress", "message": ""},
+            "speechText": ""
+        },
+        "wifiSignalIntent": {
+            "card": {"title": "Healthy Home Coach | WiFi-Signal", "message": "{{value}}\n(86=bad, 56=fine)"},
+            "speechText": ""
+        },
+        "deviceListIntent": {
+            "card": {"title": "Healthy Home Coach | Device list", "message": ""},
+            "speechText": "<p>{{count}} devices connected.</p>",
+            "stationName": "<p>Device: {{station_name}}</p>"
+        },
+        "errorIntent": {
+            "card": {"title": "Healthy Home Coach | Error", "message": ""},
+            "speechText": "Oops, something went wrong. Please try again later!",
+            "stationName_notFound": "{{station_name}} not found."
+        },
+        "timeLeft": "\nmeasured {{value}} ago",
+        "healthIndex": ["Healthy", "Fine", "Fair", "Poor", "Unhealthy"],
+        "helpIntent": "You can ask me about the indoor climate. How can I help you?",
+        "stopIntent": "Goodbye!",
+        "unhandledIntent": "<speak><audio src='soundbank://soundlibrary/musical/amzn_sfx_electronic_beep_02'/></speak>",
+        "errorHandler": "Sorry, I did not understand that. Please try it again!",
+        "time": {
+            "unit_s": "{{count}} seconds",
+            "unit_m": "{{count}} minutes",
+            "unit_h": "{{count}} hours",
+            "day": "more than 1 day"
         }
     }
 }
