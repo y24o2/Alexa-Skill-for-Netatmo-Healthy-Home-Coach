@@ -1,0 +1,228 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "home coach",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetTemperatureIntent",
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "whats the temperatur of {station_name}",
+                        "how warm is it where you are",
+                        "how warm is it in the {station_name}",
+                        "how cold is it",
+                        "how warm is it",
+                        "whats the temperature",
+                        "Temperature",
+                        "what is the temperature of the {station_name}"
+                    ]
+                },
+                {
+                    "name": "GetAirQualityIntent",
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "how many carbon dioxide is in the air",
+                        "what's the quality of the air",
+                        "how is the air in {station_name}",
+                        "how good is the air in {station_name}"
+                    ]
+                },
+                {
+                    "name": "GetHumidityIntent",
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "air humidity",
+                        "atmospheric humidity",
+                        "humidity of {station_name}",
+                        "humidity of the {station_name}",
+                        "humidity in {station_name}",
+                        "humidity"
+                    ]
+                },
+                {
+                    "name": "GetNoiseIntent",
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "sound level meter {station_name}",
+                        "sound level meter",
+                        "noise level",
+                        "sound level",
+                        "noise",
+                        "how loud is it in the {station_name}",
+                        "loudness",
+                        "how loud is it"
+                    ]
+                },
+                {
+                    "name": "GetPressureIntent",
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "air pressure of {station_name}",
+                        "air pressure in the {station_name}",
+                        "barometer {station_name}",
+                        "barometric-pressure",
+                        "air gauge",
+                        "air pressure",
+                        "barometer"
+                    ]
+                },
+                {
+                    "name": "GetHealthIndexIntent",
+                    "slots": [
+                        {
+                            "name": "stations_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "health",
+                        "healthy air",
+                        "{stations_name} s healthindex",
+                        "whats the index",
+                        "what is the healthindex"
+                    ]
+                },
+                {
+                    "name": "GetSumIntent",
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "all values of {station_name}",
+                        "all values",
+                        "full report",
+                        "tell me all",
+                        "tell me all about {station_name}",
+                        "start the report",
+                        "Report {station_name}"
+                    ]
+                },
+                {
+                    "name": "GetLastUpdateIntent",
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "how old are the records {station_name}",
+                        "when were the records reading",
+                        "how old are the values",
+                        "latest update of {station_name}",
+                        "latest update",
+                        "when was the last data update"
+                    ]
+                },
+                {
+                    "name": "GetDeviceLocationIntent",
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "{station_name} position",
+                        "city",
+                        "in which city is {station_name}",
+                        "in which city stands {station_name}",
+                        "city of",
+                        "location name",
+                        "what is the location of {station_name}"
+                    ]
+                },
+                {
+                    "name": "GetUserEmailIntent",
+                    "slots": [],
+                    "samples": [
+                        "whos linked",
+                        "which user is connected to the skill",
+                        "which user is connected to",
+                        "conected mailaddress",
+                        "mailaddress",
+                        "user email",
+                        "owner email"
+                    ]
+                },
+                {
+                    "name": "GetWifiStatusIntent",
+                    "slots": [
+                        {
+                            "name": "station_name",
+                            "type": "AMAZON.Room"
+                        }
+                    ],
+                    "samples": [
+                        "signal in the {station_name}",
+                        "wifi signal",
+                        "signal level",
+                        "network connection level",
+                        "wifi status",
+                        "wifi status of {station_name}"
+                    ]
+                },
+                {
+                    "name": "GetDeviceListIntent",
+                    "slots": [],
+                    "samples": [
+                        "station list",
+                        "list the linkde devices",
+                        "device list",
+                        "list devices",
+                        "list the connected devices"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
