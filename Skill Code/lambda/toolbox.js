@@ -82,7 +82,7 @@ const buildIntentHandler = (intent, callback) => {
                 if(handlerInput.requestEnvelope.request.intent.slots && handlerInput.requestEnvelope.request.intent.slots.station_name && handlerInput.requestEnvelope.request.intent.slots.station_name.value){
                     device_num = deviceLookup(response.body.devices, handlerInput.requestEnvelope.request.intent.slots.station_name.value);
                     if (device_num === -1){
-                        speechText = stringReplace(strings[handlerInput.requestEnvelope.request.locale].errorIntent.stationName_notFound, [{"needle": "station_name", "replacement": handlerInput.requestEnvelope.request.intent.slots.station_name.value}]);
+                        speechText = stringReplace(strings[handlerInput.requestEnvelope.request.locale].errorIntent.stationName_notFound, [{"needle": "stationName", "replacement": handlerInput.requestEnvelope.request.intent.slots.station_name.value}]);
                         cardMessage = speechText;
                         return handlerInput.responseBuilder
                             .speak(speechText)
