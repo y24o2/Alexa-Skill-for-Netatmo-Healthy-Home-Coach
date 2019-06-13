@@ -6,59 +6,59 @@
             "reprompt": "Welche Funktion möchtest du starten?"
         },
         "temperatureIntent":{
-            "card": {"title": "Healthy Home Coach | Temperatur", "message": "{{speechText}}\ngemessen vor {{timeLeft}}"},
-            "speechText": "{{value}} °C"
+            "card": {"title": "Healthy Home Coach | Temperatur", "message": "{{value}} °C im {{stationName}}\ngemessen vor {{timeLeft}}"},
+            "speechText": "Die Temperatur im {{stationName}} beträgt {{value}} °C"
         },
         "airQualityIntent": {
-            "card": {"title": "Healthy Home Coach | CO2-Gehalt", "message": "{{speechText}}\ngemessen vor {{timeLeft}}"},
-            "speechText": "{{value}} ppm"
+            "card": {"title": "Healthy Home Coach | CO2-Gehalt", "message": "{{value}} ppm im {{stationName}}\ngemessen vor {{timeLeft}}"},
+            "speechText": "Der CO2-Gehalt im {{stationName}} beträgt {{value}} ppm"
 
         },
         "humidityIntent": {
-            "card": {"title": "Healthy Home Coach | Luftfeuchtigkeit", "message": "{{speechText}}\ngemessen vor {{timeLeft}}"},
-            "speechText": "{{value}} %"
+            "card": {"title": "Healthy Home Coach | Luftfeuchtigkeit", "message": "{{value}} % im {{stationName}}\ngemessen vor {{timeLeft}}"},
+            "speechText": "Die Luftfeuchtigkeit im {{stationName}} beträgt {{value}} %"
         },
         "noiseLevelIntent": {
-            "card": {"title": "Healthy Home Coach | Lautstärke", "message": "{{speechText}}\ngemessen vor {{timeLeft}}"},
-            "speechText": "{{value}} dB"
+            "card": {"title": "Healthy Home Coach | Lautstärke", "message": "{{value}} dB im {{stationName}}\ngemessen vor {{timeLeft}}"},
+            "speechText": "Die Lautstärke im {{stationName}} beträgt {{value}} dB"
         },
         "airPressureIntent":{
-            "card":{"title": "Healthy Home Coach | Luftdruck", "message": "{{air_pressure}} mbar\nabsolut {{abs_air_pressure}} mbar"},
-            "speechText": "{{value}} Milli-bar"
+            "card":{"title": "Healthy Home Coach | Luftdruck", "message": "{{stationName}}:\n{{air_pressure}} mbar\nabsolut {{abs_air_pressure}} mbar\ngemessen vor {{timeLeft}}"},
+            "speechText": "Der Luftdruck im {{stationName}} beträgt {{value}} Milli-bar"
         },
         "healthIndexIntent": {
-            "card": {"title": "Healthy Home Coach | Gesundheitsindex", "message": "Index: {{value}} ({{spoken_index}})\ngemessen vor {{timeLeft}}"},
-            "speechText": "{{value}}"
+            "card": {"title": "Healthy Home Coach | Gesundheitsindex", "message": "Index {{stationName}}: {{value}} ({{spoken_index}})\ngemessen vor {{timeLeft}}"},
+            "speechText": "Die Luft im {{stationName}} ist {{value}}"
         },
         "sumIntent": {
-            "card": {"title": "Healthy Home Coach", "message": "Klimaindex: {{index}} ({{spoken_index}})\nTemperatur: {{temperature}} °C\nLuftfeuchtigkeit: {{humidity}} %\nCO2-Gehalt: {{co2}} ppm\nLuftdruck: {{pressure}} mbar\nLautstärke: {{noise_level}} dB\ngemessen vor {{timeLeft}}"},
-            "speechText": "<speak><p>Das Raumklima ist insgesamt {{index}}</p><p>Die Temperatur beträgt {{temperature}} Grad Celsius</p><p>Die Luftfeuchtigkeit beträgt {{humidity}} %</p><p>Der CO2-Gehalt beträgt {{co2}} ppm</p><p>Der Luftdruck beträgt {{pressure}} Milli-bar</p><p>Die Lautstärke beträgt {{noise_level}} Dezibell</p></speak>"
+            "card": {"title": "Healthy Home Coach", "message": "Klimaindex ({{stationName}}): {{index}} ({{spoken_index}})\nTemperatur: {{temperature}} °C\nLuftfeuchtigkeit: {{humidity}} %\nCO2-Gehalt: {{co2}} ppm\nLuftdruck: {{pressure}} mbar\nLautstärke: {{noise_level}} dB\ngemessen vor {{timeLeft}}"},
+            "speechText": "<speak><p>Das Klima im {{stationName}} ist insgesamt {{index}}</p><p>Die Temperatur beträgt {{temperature}} Grad Celsius</p><p>Die Luftfeuchtigkeit beträgt {{humidity}} %</p><p>Der CO2-Gehalt beträgt {{co2}} ppm</p><p>Der Luftdruck beträgt {{pressure}} Milli-bar</p><p>Die Lautstärke beträgt {{noise_level}} Dezibell</p></speak>"
         },
         "timeIntent": {
-            "card": {"title": "Healthy Home Coach | Messzeitpunkt", "message": "Messung durchgeführt vor {{value}}"},
-            "speechText": "Messung durchgeführt vor {{value}}"
+            "card": {"title": "Healthy Home Coach | Messzeitpunkt", "message": "Messung im {{stationName}} durchgeführt vor {{value}}"},
+            "speechText": "Messung im {{stationName}} durchgeführt vor {{value}}"
         },
         "locationIntent": {
             "card": {"title": "Healthy Home Coach | Standort", "message": "{{city}}\n\tLong: {{long}}\n\tLat: {{lat}}"},
-            "speechText": ""
+            "speechText": "Der Sensor {{stationName}} befindet sich in {{city}}"
         },
         "mailIntent": {
-            "card": {"title": "Healthy Home Coach | Emailadresse", "message": ""},
-            "speechText": ""
+            "card": {"title": "Healthy Home Coach | Emailadresse", "message": "{{mail}}"},
+            "speechText": "Die verbundene Emailadresse lautet {{mail}}"
         },
         "wifiSignalIntent": {
-            "card": {"title": "Healthy Home Coach | WiFi-Status", "message": "{{value}}\n(86=schlecht, 56=gut)"},
-            "speechText": ""
+            "card": {"title": "Healthy Home Coach | WiFi-Status", "message": "WiFi-Status {{stationName}}:\n{{value}}\n(86=schlecht, 56=gut)"},
+            "speechText": "Die W-LAN-Signalstärke im {{stationName}} beträgt {{value}}"
         },
         "deviceListIntent": {
             "card": {"title": "Healthy Home Coach | Messstationen", "message": ""},
-            "speechText": "<p>{{count}} Geräte sind verknüpft.</p>",
-            "stationName": "<p>Gerät: {{station_name}}</p>"
+            "speechText": "<p>Es sind {{count}} Geräte verknüpft.</p>",
+            "stationName": "<p>Gerät: {{stationName}}</p>"
         },
         "errorIntent": {
             "card": {"title": "Healthy Home Coach | Fehler", "message": ""},
             "speechText": "Ups, da ist etwas schiefgegangen. Bitte probiere es später noch einmal!",
-            "stationName_notFound": "{{station_name}} nicht gefunden."
+            "stationName_notFound": "{{stationName}} nicht gefunden."
         },
         "timeLeft": "\ngemessen vor {{value}}",
         "healthIndex": ["Gesund", "Gut", "Okay", "Schlecht", "Ungesund"],
@@ -80,59 +80,59 @@
             "reprompt": "Which function do you want to start?"
         },
         "temperatureIntent":{
-            "card": {"title": "Healthy Home Coach | Temperature", "message": "{{speechText}}\nmeasured {{timeLeft}} ago"},
-            "speechText": "{{value}} °F"
+            "card": {"title": "Healthy Home Coach | Temperature", "message": "{{value}} °F in the {{stationName}}\nmeasured {{timeLeft}} ago"},
+            "speechText": "The temperature in the {{stationName}} is {{value}} °F"
         },
         "airQualityIntent": {
-            "card": {"title": "Healthy Home Coach | CO2 Concentration", "message": "{{speechText}}\nmeasured {{timeLeft}} ago"},
-            "speechText": "{{value}} ppm"
+            "card": {"title": "Healthy Home Coach | CO2 Concentration", "message": "{{value}} ppm in the {{stationName}}\nmeasured {{timeLeft}} ago"},
+            "speechText": "The CO2 concentration in the {{stationName}} is {{value}} ppm"
 
         },
         "humidityIntent": {
-            "card": {"title": "Healthy Home Coach | Humidity", "message": "{{speechText}}\nmeasured {{timeLeft}} ago"},
-            "speechText": "{{value}} %"
+            "card": {"title": "Healthy Home Coach | Humidity", "message": "{{value}} % in the {{stationName}}\nmeasured {{timeLeft}} ago"},
+            "speechText": "The air humidity in the {{stationName}} is {{value}} %"
         },
         "noiseLevelIntent": {
-            "card": {"title": "Healthy Home Coach | Noise Level", "message": "{{speechText}}\nmeasured {{timeLeft}} ago"},
-            "speechText": "{{value}} dB"
+            "card": {"title": "Healthy Home Coach | Noise Level", "message": "{{value}} dB in the {{stationName}}\nmeasured {{timeLeft}} ago"},
+            "speechText": "The noise level in the {{stationName}} is {{value}} dB"
         },
         "airPressureIntent":{
-            "card":{"title": "Healthy Home Coach | Air Pressure", "message": "{{air_pressure}} mbar\nabsolut {{abs_air_pressure}} mbar"},
-            "speechText": "{{value}} Milli-bar"
+            "card":{"title": "Healthy Home Coach | Air Pressure", "message": "{{stationName}}:\n{{air_pressure}} mbar\nabsolut {{abs_air_pressure}} mbar\nmeasured {{timeLeft}} ago"},
+            "speechText": "The air pressure in the {{stationName}} is {{value}} milli-bar"
         },
         "healthIndexIntent": {
-            "card": {"title": "Healthy Home Coach | Health Index", "message": "Index: {{value}} ({{spoken_index}})\nmeasured {{timeLeft}} ago"},
-            "speechText": "{{value}}"
+            "card": {"title": "Healthy Home Coach | Health Index", "message": "Index {{stationName}}: {{value}} ({{spoken_index}})\nmeasured {{timeLeft}} vor"},
+            "speechText": "The air in the {{stationName}} is {{value}}"
         },
         "sumIntent": {
-            "card": {"title": "Healthy Home Coach", "message": "Healthindex: {{index}} ({{spoken_index}})\nTemperature: {{temperature}} °F\nHumidity: {{humidity}} %\nCO2-Concentration: {{co2}} ppm\nAir Pressure: {{pressure}} mbar\nNoise Level: {{noise_level}} dB\nmeasured {{timeLeft}} ago"},
-            "speechText": "<speak><p>The indoor climate is {{index}} overall</p><p>The temperature is {{temperature}} degree fahrenheit</p><p>The humidity is {{humidity}} %</p><p>The CO2-Concentration is {{co2}} ppm</p><p>The air pressure is {{pressure}} Milli-bar</p><p>The Noise level is {{noise_level}} Dezibell</p></speak>"
+            "card": {"title": "Healthy Home Coach", "message": "Health-Index ({{stationName}}): {{index}} ({{spoken_index}})\nTemperature: {{temperature}} °F\nAir Humidity: {{humidity}} %\nCO2-Concentration: {{co2}} ppm\nAir Pressure: {{pressure}} mbar\nNoise Level: {{noise_level}} dB\nnmeasured {{timeLeft}} ago"},
+            "speechText": "<speak><p>The air in the {{stationName}} is {{index}} overall</p><p>The temperature is {{temperature}} degree Fahrenheit</p><p>The air humidity is {{humidity}} %</p><p>The CO2-Concentration is {{co2}} ppm</p><p>The air pressure is {{pressure}} milli-bar</p><p>and the noise level is {{noise_level}} dB</p></speak>"
         },
         "timeIntent": {
-            "card": {"title": "Healthy Home Coach | Measuring time", "message": "Measured {{value}} ago"},
-            "speechText": "Measured {{value}} ago"
+            "card": {"title": "Healthy Home Coach | Measuring time", "message": "{{stationName}} measured {{value}} ago"},
+            "speechText": "{{stationName}} measured {{value}} ago"
         },
         "locationIntent": {
             "card": {"title": "Healthy Home Coach | Location", "message": "{{city}}\n\tLong: {{long}}\n\tLat: {{lat}}"},
-            "speechText": ""
+            "speechText": "The device {{stationName}} is located in {{city}}"
         },
         "mailIntent": {
-            "card": {"title": "Healthy Home Coach | Emailaddress", "message": ""},
-            "speechText": ""
+            "card": {"title": "Healthy Home Coach | Emailaddress", "message": "{{mail}}"},
+            "speechText": "The connected email address is {{mail}}"
         },
         "wifiSignalIntent": {
-            "card": {"title": "Healthy Home Coach | WiFi-Signal", "message": "{{value}}\n(86=bad, 56=fine)"},
-            "speechText": ""
+            "card": {"title": "Healthy Home Coach | WiFi-Signal", "message": "WiFi-Signal {{stationName}}:\n{{value}}\n(86=poor, 56=fine)"},
+            "speechText": "The wireless connection signale value in the {{stationName}} is {{value}}"
         },
         "deviceListIntent": {
             "card": {"title": "Healthy Home Coach | Device list", "message": ""},
-            "speechText": "<p>{{count}} devices connected.</p>",
-            "stationName": "<p>Device: {{station_name}}</p>"
+            "speechText": "<p>{{count}} devices are linked.</p>",
+            "stationName": "<p>Device: {{stationName}}</p>"
         },
         "errorIntent": {
             "card": {"title": "Healthy Home Coach | Error", "message": ""},
             "speechText": "Oops, something went wrong. Please try again later!",
-            "stationName_notFound": "{{station_name}} not found."
+            "stationName_notFound": "{{stationName}} not found."
         },
         "timeLeft": "\nmeasured {{value}} ago",
         "healthIndex": ["Healthy", "Fine", "Fair", "Poor", "Unhealthy"],
