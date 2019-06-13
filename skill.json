@@ -131,6 +131,9 @@
                         }
                     ],
                     "samples": [
+                        "ist die luft gesund",
+                        "ist die Luft im {station_name} gesund",
+                        "wie ist der Index im {station_name}",
                         "nenne mir den Gesundheitsindex vom {station_name}",
                         "Healthindex vom {station_name}",
                         "nenne mir den Gesundheitsindex",
