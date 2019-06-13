@@ -105,7 +105,7 @@
                         "air pressure of {station_name}",
                         "air pressure in the {station_name}",
                         "barometer {station_name}",
-                        "barometric-pressure",
+                        " barometric-pressure",
                         "air gauge",
                         "air pressure",
                         "barometer"
@@ -171,11 +171,13 @@
                         }
                     ],
                     "samples": [
+                        "where is the {station_name} located",
+                        "where is the device {station_name} located",
                         "{station_name} position",
                         "city",
                         "in which city is {station_name}",
                         "in which city stands {station_name}",
-                        "city of",
+                        "city of {station_name}",
                         "location name",
                         "what is the location of {station_name}"
                     ]
@@ -214,9 +216,9 @@
                     "name": "GetDeviceListIntent",
                     "slots": [],
                     "samples": [
+                        "list linked devices",
                         "station list",
                         "list the linked devices",
-                        "list linked devices",
                         "device list",
                         "list devices",
                         "list the connected devices"
