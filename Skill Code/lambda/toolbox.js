@@ -69,6 +69,13 @@ const buildIntentHandler = (intent, callback) => {
             && request.intent.name === intent;
         },
         async handle(handlerInput) {
+            if (!handlerInput.requestEnvelope.context.System.user.accessToken || handlerInput.requestEnvelope.context.System.user.accessToken.length === 0){
+                speechText = strings[handlerInput.requestEnvelope.request.locale].welcome.notLinked;
+                return handlerInput.responseBuilder
+                    .speak(speechText)
+                    .withLinkAccountCard()
+                    .getResponse();
+            }
             var accessToken = handlerInput.requestEnvelope.context.System.user.accessToken;
             var response = await httpGet(accessToken);
             
