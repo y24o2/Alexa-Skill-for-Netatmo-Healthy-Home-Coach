@@ -5,7 +5,7 @@ const strings = require('./strings.json');
 let buildIntentHandler = tb.buildIntentHandler;
 let timeLeft = tb.timeLeft;
 let httpGet = tb.httpGet;
-let devieLookup = tb.devieLookup;
+let deviceLookup = tb.deviceLookup;
 let stringReplace = tb.stringReplace;
 
 // LaunchRequestHandler
